@@ -1,0 +1,17 @@
+module load nvhpc
+spack install openblas%nvhpc
+
+cd mlip2
+mkdir build
+
+#cmake .. -D CMAKE_CXX_COMPILER=nvc++ -D CMAKE_C_COMPILER=nvc -D CMAKE_Fortran_COMPILER=nvfortran
+
+#cmake .. -D CMAKE_CXX_COMPILER=mpicxx -D CMAKE_C_COMPILER=mpicc -D CMAKE_Fortran_COMPILER=mpifort
+
+
+# DO NOT COMPILE MLIP BY NVC!
+# CANNOT RUN!
+
+make -j36
+
+cp lib_mlip....  lamps..........

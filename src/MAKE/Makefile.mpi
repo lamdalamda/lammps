@@ -6,28 +6,25 @@ SHELL = /bin/sh
 # compiler/linker settings
 # specify flags and libraries needed for your compiler
 
-KOKKOS_DEVICES = HIP
-KOKKOS_ARCH = HSW,VEGA900
-HIP_PLATFORM = HCC
-# with kokko flags:
-#mpicxx -g -O3 -std=c++11 -lgfortran -L/opt/rocm/lib -lamdhip64   -fopenmp -L/home/dx/app/spack/opt/spack/linux-ubuntu20.04-haswell/clang-amd/openblas-0.3.18-m26i3cw4d3v2h3ntqqdqesjfrq5d5pxo/lib      -lopenblas  -DLAMMPS_GZIP -DLAMMPS_MEMALIGN=64   -DLMP_KOKKOS -I../../lib/mlip -DLMP_GPU  -DMPICH_SKIP_MPICXX -DOMPI_SKIP_MPICXX=1   -I./ -I../../lib/kokkos/core/src -I../../lib/kokkos/containers/src -I../../lib/kokkos/algorithms/src -std=c++14 -march=core-avx2 -mtune=core-avx2 --amdgpu-target=gfx900 -fno-gpu-rdc --gcc-toolchain=/usr -I./ -I../../lib/kokkos/core/src -I../../lib/kokkos/containers/src -I../../lib/kokkos/algorithms/src -lgfortran   
-# without kokko flags
-#mpicxx -g -O3 -std=c++11 -lgfortran -L/opt/rocm/lib -lamdhip64   -fopenmp -L/home/dx/app/spack/opt/spack/linux-ubuntu20.04-haswell/clang-amd/openblas-0.3.18-m26i3cw4d3v2h3ntqqdqesjfrq5d5pxo/lib      -lopenblas  -DLAMMPS_GZIP -DLAMMPS_MEMALIGN=64   -DLMP_KOKKOS -I../../lib/mlip -DLMP_GPU  -DMPICH_SKIP_MPICXX -DOMPI_SKIP_MPICXX=1   -I./ -I../../lib/kokkos/core/src -I../../lib/kokkos/containers/src -I../../lib/kokkos/algorithms/src -std=c++14 -fopenmp=libomp --gcc-toolchain=/usr -I./ -I../../lib/kokkos/core/src -I../../lib/kokkos/containers/src -I../../lib/kokkos/algorithms/src -lgfortran 
-
+KOKKOS_DEVICES = Cuda
+KOKKOS_ARCH = HSW,VOLTA70
+KOKKOS_CUDA_OPTIONS = "enable_lambda"
+FFT_INC = -DFFT_CUFFT           # enable use of cuFFT (optional)
+FFT_LIB = -lcufft               # link to cuFFT library
 
 
 KOKKOS_ABSOLUTE_PATH = $(shell cd $(KOKKOS_PATH); pwd)
-#export OMPI_CXX = $(KOKKOS_ABSOLUTE_PATH)/config/nvcc_wrapper
+export OMPI_CXX = $(KOKKOS_ABSOLUTE_PATH)/bin/nvcc_wrapper
+CC = mpicxx
 
 CC =		mpicxx
-CCFLAGS =	-g -O3 -std=c++11  -fopenmp 	-std=c++14  -march=core-avx2 -mtune=core-avx2 --offload-arch=gfx803 -I/opt/rocm/hip/include/hip -I/opt/rocm/hip/include/ -DHIP_PLATFORM=HCC
-
+CCFLAGS =	-g -O3  
 
 SHFLAGS =	-fPIC
 DEPFLAGS =	-M
 
 LINK =		mpicxx
-LINKFLAGS =	-g -O3 -std=c++11  -lgfortran -L/opt/rocm/lib -lamdhip64   -fopenmp -L/home/dx/app/spack/opt/spack/linux-ubuntu20.04-haswell/clang-amd/openblas-0.3.18-m26i3cw4d3v2h3ntqqdqesjfrq5d5pxo/lib	-std=c++14 -lopenblas -march=core-avx2 -mtune=core-avx2 --offload-arch=gfx803 -I/opt/rocm/hip/include/hip -I/opt/rocm/hip/include/
+LINKFLAGS =	-g -O3  -lgfortran  
 LIB =
 SIZE =		size
 
