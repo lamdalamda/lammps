@@ -20,7 +20,7 @@ KOKKOS_ABSOLUTE_PATH = $(shell cd $(KOKKOS_PATH); pwd)
 #export OMPI_CXX = $(KOKKOS_ABSOLUTE_PATH)/config/nvcc_wrapper
 
 CC =		mpicxx
-CCFLAGS =	-g -O3 -std=c++11  -fopenmp 	-std=c++14  -march=core-avx2 -mtune=core-avx2 --offload-arch=gfx803 -I/opt/rocm/hip/include/hip -I/opt/rocm/hip/include/
+CCFLAGS =	-g -O3 -std=c++11  -fopenmp 	-std=c++14  -march=core-avx2 -mtune=core-avx2 --offload-arch=gfx803 -I/opt/rocm/hip/include/hip -I/opt/rocm/hip/include/ -DHIP_PLATFORM=HCC
 
 
 SHFLAGS =	-fPIC
