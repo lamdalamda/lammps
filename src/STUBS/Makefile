@@ -21,7 +21,7 @@ OBJ = 		$(SRC:.cpp=.o)
 
 # System-specific settings
 
-CC =		g++
+CC =		/opt/rocm/llvm/bin/clang++
 CCFLAGS =	-O -fPIC -I. # add -I to insure mpi.h from this dir is included
 ARCHIVE =	ar
 ARCHFLAG =	rs

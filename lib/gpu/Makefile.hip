@@ -57,7 +57,8 @@ OBJ_DIR = ./obj
 LIB_DIR = .
 AR = ar
 BSH = /bin/sh
-
+HIP_PLATFORM=amd
+HIP_ARCH=gfx803
 
 # /* ----------------------------------------------------------------------
 #  				don't change section below without need
