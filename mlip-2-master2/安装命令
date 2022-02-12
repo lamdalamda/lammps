@@ -1,0 +1,1 @@
+ cmake .. -D CMAKE_CXX_COMPILER=/opt/rocm/llvm/bin/clang++ -D CMAKE_C_COMPILER=/opt/rocm/llvm/bin/clang -D CMAKE_Fortran_COMPILER=/opt/rocm/llvm/bin/flang -DBLAS_ROOT=/home/dx/app/spack/opt/spack/linux-ubuntu20.04-haswell/clang-amd/openblas-0.3.18-m26i3cw4d3v2h3ntqqdqesjfrq5d5pxo/lib

@@ -51,3 +51,5 @@ Thumbs.db
 /lmp
 /mlip-2-master/*
 /interface-lammps-mlip-2-master/*
+/interface-lammps-mlip-2-master/LAMMPS/*
+pair_MLIP.*
