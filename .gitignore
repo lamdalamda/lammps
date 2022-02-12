@@ -49,4 +49,5 @@ Thumbs.db
 /Testing
 /cmake_install.cmake
 /lmp
-mlip-2-master/*
+/mlip-2-master/*
+/interface-lammps-mlip-2-master/*
